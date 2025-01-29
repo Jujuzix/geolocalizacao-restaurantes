@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geolocalização de Restaurantes</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="main.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-oR7bY/FoYN9V8uS8VVp4gDGP3eFGzM9Tm4gaMN5wP3s=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-oR7bY/FoYN9V8uS8VVp4gDGP3eFGzM9Tm4gaMN5wP3s=" crossorigin=""></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+    
+      header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+      }
+    
+      main {
+        padding: 20px;
+      }
+    
+      /* Estilo do Mapa */
+      #map {
+        height: 60vh; /* Altura dinâmica para se ajustar ao viewport */
+        width: 100%; /* Largura total */
+        max-width: 1200px; /* Largura máxima */
+        margin: 0 auto; /* Centraliza no container */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+      }
+    
+      /* Seção Geral */
+      section div {
+        margin-bottom: 20px;
+      }
+    
+      input[type="text"] {
+        padding: 10px;
+        margin-right: 10px;
+        width: calc(100% - 120px);
+        max-width: 400px;
+      }
+    
+      button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    
+      button:hover {
+        background-color: #45a049;
+      }
+    
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+    
+      li {
+        padding: 10px;
+        background-color: #f9f9f9;
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+    
+      footer {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f1f1f1;
+        color: #555;
+      }
+    
+      /* Responsividade */
+      @media (max-width: 768px) {
+        #map {
+          height: 50vh; /* Reduz altura em telas menores */
+        }
+    
+        input[type="text"] {
+          width: calc(100% - 100px);
+        }
+    
+        button {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Geolocalização de Restaurantes</h1>
+    </header>
+
+    <main>
+      <section>
+        <div id="map"></div>
+      </section>
+
+      <section>
+        <div>
+          <p>Latitude: <span id="latitude">0.0</span></p>
+          <p>Longitude: <span id="longitude">0.0</span></p>
+          <input type="text" id="nomeRestaurante" placeholder="Nome do restaurante" />
+          <button id="salvarRestaurante">Salvar Restaurante</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Restaurantes Salvos</h2>
+        <ul id="listaRestaurantes"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Aplicação de Geolocalização - Restaurantes</p>
+    </footer>
+  </body>
+</html>
